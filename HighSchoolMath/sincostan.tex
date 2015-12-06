@@ -1,0 +1,184 @@
+\documentclass[a4paper,11pt]{jreport}
+\usepackage{amsmath}
+\usepackage{ascmac,here,txfonts,txfonts}
+\usepackage{bm}
+\usepackage{color}
+\usepackage[dvips]{graphicx}
+\usepackage{multirow}
+\usepackage[top=20truemm,bottom=20truemm,left=15truemm,right=15truemm]{geometry}
+\usepackage{sincostan}
+
+\title{
+  高校数学の楽しい問題集
+}
+\author{koturn}
+\date{2014年5月15日}
+
+\begin{document}
+% \maketitle
+\chapter*{
+  高校数学の楽しい問題集
+}
+\begin{flushright}
+  作成者：koturn
+\end{flushright}
+
+
+% ============================================================================ %
+\renewcommand{\thesection}{問\arabic{section}}
+\renewcommand{\thesubsection}{}
+\setcounter{section}{0}
+
+\section{}
+\subsection*{問題}
+$x$ に関する方程式
+
+\begin{equation}
+  \sin x + \cos x + \tan x = 0 \:\:\:\: \left( -\pi < x < \pi \: \text{かつ} \: x \neq \dfrac{n \pi}{2} \: (\text{ただし，} \: n = -1, 0, 1) \right)
+  \label{eq:sincostan}
+\end{equation}
+
+の実数解の個数を求めよ．
+
+\subsection*{解答}
+与えられた$x$の範囲において，$\tan x$，$\tan \dfrac{x}{2}$ は定義可能であり，
+\begin{equation}
+  -\dfrac{\pi}{2} < \dfrac{x}{2} < \dfrac{\pi}{2} \: \text{かつ} \: \dfrac{x}{2} \neq \pm \dfrac{\pi}{4}, 0 \: \text{であるから}\: \tan \dfrac{x}{2} \neq \pm 1, 0
+\end{equation}
+
+\begin{equation}
+  -\dfrac{\pi}{2} < \dfrac{x}{2} < \dfrac{\pi}{2} \: \text{であるから}\: \cos \dfrac{x}{2} \neq 0
+\end{equation}
+
+である．ここで，$t = \tan \dfrac{x}{2}$ とおくと，$\sin x$，$\cos x$，$\tan x$は（ゼロ割りの心配無く）それぞれ，$t$を用いて，
+
+\begin{equation}
+  \sin x
+  = \dfrac{2 \sin \dfrac{x}{2} \cos \dfrac{x}{2}}{1} \times 1
+  = \dfrac{2 \sin \dfrac{x}{2} \cos \dfrac{x}{2}}{\cos^2 \dfrac{x}{2} + \sin^2 \dfrac{x}{2}} \times \dfrac{\dfrac{1}{\cos^2 \dfrac{x}{2}}}{\dfrac{1}{\cos^2 \dfrac{x}{2}}}
+  = \dfrac{2 \tan \dfrac{x}{2}}{1 + \tan^2 \dfrac{x}{2}}
+  = \dfrac{2t}{1 + t^2}
+\end{equation}
+
+\begin{equation}
+  \cos x
+  = \dfrac{\cos^2 \dfrac{x}{2} - \sin^2 \dfrac{x}{2}}{1} \times 1
+  = \dfrac{\cos^2 \dfrac{x}{2} - \sin^2 \dfrac{x}{2}}{\cos^2 \dfrac{x}{2} + \sin^2 \dfrac{x}{2}} \times \dfrac{\dfrac{1}{\cos^2 \dfrac{x}{2}}}{\dfrac{1}{\cos^2 \dfrac{x}{2}}}
+  = \dfrac{1 - \tan^2 \dfrac{x}{2}}{1 + \tan^2 \dfrac{x}{2}}
+  = \dfrac{1 - t^2}{1 + t^2}
+\end{equation}
+
+\begin{equation}
+  \tan x
+  = \dfrac{2 \tan \dfrac{x}{2}}{1 - \tan^2 \dfrac{x}{2}}
+  = \dfrac{2t}{1 - t^2}
+\end{equation}
+
+とおくことができる．これより，方程式（\ref{eq:sincostan}）は，$t$に関する方程式
+
+\begin{equation}
+  \dfrac{2t}{1 + t^2} + \dfrac{1 - t^2}{1 +t^2} + \dfrac{2t}{1 - t^2} = 0
+  \label{eq:sincostan_t}
+\end{equation}
+
+に置き直すことができる．
+この$t$に関する方程式（\ref{eq:sincostan_t}）の両辺に $(1 + t^2) (1 - t^2)$ を掛けると，
+
+\begin{eqnarray}
+  2t (1 - t^2) + (1 - t^2) + 2t (1 + t^2) & =  & 0
+  \nonumber \\
+  t^4 - 2t^2 + 4t + 1 & =  & 0
+\end{eqnarray}
+
+という$t$に関する4次方程式に帰着できる．
+
+$- \pi < x < \pi$において，$t = \tan \dfrac{x}{2}$ は単調増加するので，ある$t$（$\neq \pm 1, 0$）の値に対して，1つの$x$の値が対応している．
+したがって，$x$についての方程式（\ref{eq:sincostan}）と$t$についての方程式（\ref{eq:sincostan_t}）の実数解の個数は等しいと考えられるので，方程式（$\ref{eq:sincostan_t}$）の解の個数を調べる．
+
+ここで，
+
+\begin{equation}
+  f(t) = t^4 - 2t^2 + 4t + 1
+\end{equation}
+
+とおくと，
+
+\begin{equation}
+  f'(t) = 4t^3 - 4t + 4 = 4(t^3 - t + 1)
+\end{equation}
+
+\begin{equation}
+  f''(t) = 4(3t^2 - 1) = 12 \left( t + \dfrac{1}{\sqrt{3}} \right) \left( t - \dfrac{1}{\sqrt{3}} \right)
+\end{equation}
+
+となる．
+しかし，方程式$f'(t) = 0$を解くのは容易ではなく，$f(t)$の増減表を描くことができない．
+そこで，方程式$f''(t) = 0$を解き，$f'(t)$の増減表を描くことで，方程式$f'(t) = 0$の解について調べる．
+
+$f'(t)$の増減表は，表\ref{tbl:second_incdec}の通り．
+
+\begin{table}[!htbp]
+  \centering
+  \caption{$f'(t)$の増減表}
+  \begin{tabular}{c|c|c|c|c|c|c|c|}
+    $t$      & $(- \infty)$ & $\cdots$   & $- \dfrac{1}{\sqrt{3}}$                      & $\ldots$   & $\dfrac{1}{\sqrt{3}}$                          & $\ldots$   & $(+ \infty)$ \\
+    \hline
+    $f''(t)$ &              & $+$        & $0$                                          & $-$        & 0                                              & $+$        & \\
+    \hline
+    $f'(t)$  & $(- \infty)$ & $\nearrow$ & $4 \left( \dfrac{2 \sqrt{3}}{9} + 1 \right)$ & $\searrow$ & $4 \left( - \dfrac{2 \sqrt{3}}{9} + 1 \right)$ & $\nearrow$ & $(+ \infty)$ \\
+  \end{tabular}
+  \label{tbl:second_incdec}
+\end{table}
+
+\begin{center}
+  \begin{figure}[htbp]
+    \begin{center}
+      \resizebox{100mm}{!}{\input{img/second_incdec}}
+      \caption{$y = f'(t)$のグラフ}
+    \end{center}
+  \end{figure}
+\end{center}
+
+増減表\ref{tbl:second_incdec}より，$f'(\alpha) = 0$となる実数$\alpha < -\dfrac{1}{\sqrt{3}}$ がただひとつ存在する（換言すれば，$f(t)$の極値は1つだけである）．
+
+ところで，$f(t)$の増減表は，表\ref{tbl:first_incdec}に示す通りになる．
+
+\begin{table}[!Hhtbp]
+  \centering
+  \caption{$f(t)$の増減表}
+  \begin{tabular}{c||c|c|c|c|c}
+    $t$      & $(- \infty)$ & $\cdots$   & $\alpha$    & $\ldots$   & $(+ \infty)$ \\
+    \hline
+    $f'(t)$  &              & $-$        & $0$         & $+$        & \\
+    \hline
+    $f(t)$   & $(+ \infty)$ & $\searrow$ & $f(\alpha)$ & $\nearrow$ & $(+ \infty)$
+  \end{tabular}
+  \label{tbl:first_incdec}
+\end{table}
+
+\begin{center}
+  \begin{figure}[htbp]
+    \centering
+    \resizebox{100mm}{!}{\input{img/first_incdec}}
+    \caption{$y = f(t)$のグラフ}
+  \end{figure}
+\end{center}
+
+この増減表\ref{tbl:first_incdec}と，$\alpha < - \dfrac{1}{\sqrt{3}}$より，
+
+\begin{eqnarray}
+  f(\alpha)
+  & < &
+  f \left( - \dfrac{1}{\sqrt{3}} \right)
+  \nonumber \\ & = &
+  \left( - \dfrac{1}{\sqrt{3}} \right)^4 -2 \left( - \dfrac{1}{\sqrt{3}} \right)^2 + 4 \left( - \dfrac{1}{\sqrt{3}} \right) + 1
+  \nonumber \\ & = &
+  \dfrac{4}{9} \left( 1 - 3 \sqrt{3} \right)
+  \nonumber \\ & < &
+  0
+\end{eqnarray}
+
+したがって，$t$についての方程式（\ref{eq:sincostan_t}）は2つの実数解を持ち，その実数解は明らかに$t \neq \pm 1, 0$．
+ゆえに，$x$についての方程式（\ref{eq:sincostan}）は2つの実数解を持つ．
+
+\end{document}
